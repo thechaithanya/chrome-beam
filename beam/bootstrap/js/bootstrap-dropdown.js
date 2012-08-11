@@ -1,53 +1,100 @@
-$(function () {
+/* ============================================================
+ * bootstrap-dropdown.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#dropdowns
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
 
-    module("bootstrap-dropdowns")
 
-      test("should be defined on jquery object", function () {
-        ok($(document.body).dropdown, 'dropdown method is defined')
-      })
+!function ($) {
 
-      test("should return element", function () {
-        ok($(document.body).dropdown()[0] == document.body, 'document.body returned')
-      })
+  "use strict"; // jshint ;_;
 
-      test("should add class open to menu if clicked", function () {
-        var dropdownHTML = '<ul class="tabs">'
-          + '<li class="dropdown">'
-          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-          + '<ul class="dropdown-menu">'
-          + '<li><a href="#">Secondary link</a></li>'
-          + '<li><a href="#">Something else here</a></li>'
-          + '<li class="divider"></li>'
-          + '<li><a href="#">Another link</a></li>'
-          + '</ul>'
-          + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
 
-        ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
-      })
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
 
-      test("should remove open class if body clicked", function () {
-        var dropdownHTML = '<ul class="tabs">'
-          + '<li class="dropdown">'
-          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-          + '<ul class="dropdown-menu">'
-          + '<li><a href="#">Secondary link</a></li>'
-          + '<li><a href="#">Something else here</a></li>'
-          + '<li class="divider"></li>'
-          + '<li><a href="#">Another link</a></li>'
-          + '</ul>'
-          + '</li>'
-          + '</ul>'
-          , dropdown = $(dropdownHTML)
-            .appendTo('#qunit-fixture')
-            .find('[data-toggle="dropdown"]')
-            .dropdown()
-            .click()
-        ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
-        $('body').click()
-        ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class removed')
-        dropdown.remove()
-      })
+  var toggle = '[data-toggle="dropdown"]'
+    , Dropdown = function (element) {
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        $('html').on('click.dropdown.data-api', function () {
+          $el.parent().removeClass('open')
+        })
+      }
 
-})
+  Dropdown.prototype = {
+
+    constructor: Dropdown
+
+  , toggle: function (e) {
+      var $this = $(this)
+        , $parent
+        , selector
+        , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      selector = $this.attr('data-target')
+
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      $parent = $(selector)
+      $parent.length || ($parent = $this.parent())
+
+      isActive = $parent.hasClass('open')
+
+      clearMenus()
+
+      if (!isActive) $parent.toggleClass('open')
+
+      return false
+    }
+
+  }
+
+  function clearMenus() {
+    $(toggle).parent().removeClass('open')
+  }
+
+
+  /* DROPDOWN PLUGIN DEFINITION
+   * ========================== */
+
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  /* APPLY TO STANDARD DROPDOWN ELEMENTS
+   * =================================== */
+
+  $(function () {
+    $('html').on('click.dropdown.data-api', clearMenus)
+    $('body')
+      .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+  })
+
+}(window.jQuery);

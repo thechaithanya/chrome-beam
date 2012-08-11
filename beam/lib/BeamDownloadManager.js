@@ -1,14 +1,14 @@
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-		window.requestFileSystem( 
-   		 PERSISTENT,       
-    	 30 * 1024 * 1024,   
-    	 this.onInitFs,            
-    	 this.errorHandler
-);
+var BeamDownloadManager = {	
 
-var BeamDownloadManager = {
-	downloadFile:function(source){
-		 
+	readLocalFile: function(filename,callback) {
+		BeamPersistentStorage.root.getFile(filename, null, function(fileEntry) { 
+	    fileEntry.file(function(file) { 
+	      callback(file);
+	    }, this.errorHandler); 
+	  }, this.errorHandler); 
+	},	
+
+	downloadFile:function(source,filename,callback){
   		var xhr = new XMLHttpRequest(); 
 	  	xhr.open('GET', source, true); 
 	  	xhr.onprogress = function(){ 
@@ -21,13 +21,10 @@ var BeamDownloadManager = {
 	   	 	  console.log("Completed");
 	    	  console.log(xhr.response); 
 	    	  console.log(xhr.getResponseHeader("Content-Type"));
-	    	  saveFileLocally(xhr.response,xhr.getResponseHeader("Content-Type"));
+	    	  saveFileLocally(xhr.response,xhr.getResponseHeader("Content-Type"),filename,callback);
 	     } 
 	  	}; 
 	  	xhr.send(null); 
-	},
-	onInitFs:function(fs) {
-  		console.log('Opened file system: ' + fs.name);
 	},
 	errorHandler: function(e) {
 		  var msg = '';
@@ -54,20 +51,23 @@ var BeamDownloadManager = {
 		  };
 		  console.log('Error: ' + msg);
 	},
-	
 }
 
-function saveFileLocally(data,mimetype) {
-		 window.requestFileSystem.root.getFile("filename1", {create: true}, 
+function saveFileLocally(data,mimetype,filename,callback) {
+		BeamPersistentStorage.root.getFile(filename, {create: true}, 
 			function(fileEntry) { 
 			      fileEntry.createWriter(function(writer) {  // FileWriter 
 			      writer.onprogress = function() { console.log("Writing to file...") };  
-			      writer.onwrite = function(e) {console.log("Write completed.")};  
+			      writer.onwrite = function(e) {
+			      	console.log("Write completed.");
+			      	callback(mimetype,data.length);
+			  	  };  
 			      writer.onerror = function(e) { }; 
-			      var bb = new BlobBuilder(); 
+			      bb = new WebKitBlobBuilder;
 			      bb.append(data); 
 			      writer.write(bb.getBlob(mimetype)); 
 			    }, this.errorHandler); 
 			}
 		); 
 }
+

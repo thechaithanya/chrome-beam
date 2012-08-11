@@ -17,7 +17,8 @@ var BeamDropboxManager = function() {
 }
 
 BEAM.extend(BeamDropboxManager, BeamCloudInterface);
-BeamDropboxManager.prototype.uploadFile = function(path, contents, success, error) {
+BeamDropboxManager.prototype.uploadFile = function(filename, contents, success, error) {
+	var path = "/"+filename;
 	var dropbox = new Dropbox(DROPBOX_KEY, DROPBOX_SECRET);
 	dropbox.setDefaultError(error);
 
@@ -27,7 +28,8 @@ BeamDropboxManager.prototype.uploadFile = function(path, contents, success, erro
 	dropbox.authorize(upload, error);
 }
 
-BeamDropboxManager.prototype.readFile = function(path, success, error) {
+BeamDropboxManager.prototype.readFile = function(filename, success, error) {
+	var path = "/"+filename;
 	var dropbox = new Dropbox(DROPBOX_KEY, DROPBOX_SECRET);
 	dropbox.setDefaultError(error);
 
@@ -37,7 +39,8 @@ BeamDropboxManager.prototype.readFile = function(path, success, error) {
 	dropbox.authorize(contents, error);
 }
 
-BeamDropboxManager.prototype.downloadFileLink = function(path, success, error) {
+BeamDropboxManager.prototype.downloadFileLink = function(filename, success, error) {
+	var path = "/"+filename;
 	var dropbox = new Dropbox(DROPBOX_KEY, DROPBOX_SECRET);
 	dropbox.setDefaultError(error);
 
@@ -55,7 +58,7 @@ BeamDropboxManager.prototype.getSpaceRemaining = function(success,error) {
 			var remaining = (quota.quota_info.quota - quota.quota_info.normal - quota.quota_info.normal)/1024;
 			success(remaining);
 		}
-		 dropbox.getAccountInfo(sizeSuc,error);
+		dropbox.getAccountInfo(sizeSuc,error);
 	}
 	dropbox.authorize(getSize, error);
 }

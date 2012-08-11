@@ -9,3 +9,5 @@ BEAM.extend  = function(Child, Parent) {
 
 /* Bootstrappin Beam OS */
 BeamStorageManager.init();
+initPersistentStorage();
+

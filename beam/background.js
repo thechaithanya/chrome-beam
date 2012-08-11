@@ -35,4 +35,4 @@ function saveToBeamHandler(info, tab)
 chrome.contextMenus.create({"type": "normal", "title": "Save to Beam",
 							"contexts": ["all"], "onclick": saveToBeamHandler
 });
-												
+											

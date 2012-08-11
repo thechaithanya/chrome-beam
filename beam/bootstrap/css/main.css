@@ -1,21 +1,51 @@
 .roundborder{
                 background:#ffffff;
                 border-radius: 6px 6px 6px 6px;
-           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 }
-.roundborder-noshadow{
-                border: 1px solid #ccc;
-                border-bottom-color: #bbb;
-                .border-radius(4px);
-                @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-                .box-shadow(@shadow);
+.desktop-container{
+    width:100%;
+    min-height: 580px;
+    min-width: 800px;
+    max-height: 800px;
+    background: transparent;
+    margin: auto;    
+    padding-top: 10px;
 }
+
 .desktop-panel{
     width:1024px;
     height:580px;
     background: #EFEFEF;
     margin: auto;
     margin-top:-25px;
+}
+.desktop-element{
+    background-color: transparent;
+    width: 80px;
+    text-align: center;
+    float: left;
+}
+
+.desktop-icon{
+    background-color: transparent;
+    width: 40px;
+    height: 45px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;   
+    border: 2px solid #ccc;
+    text-align: center;
+    margin: 0 auto;
+}
+.desktop-icon > i {
+    margin-top: 14px;;
+}
+.desktop-icon:hover {
+    background-color: #cdcdcd;
+}
+
+.desktop-element > p {
+    color: #eee;    
+    vertical-align: bottom;
 }
 
 body {

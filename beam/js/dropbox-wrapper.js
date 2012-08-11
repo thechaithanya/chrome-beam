@@ -21,7 +21,7 @@ var dropboxDownloadLink = function(path, success, error) {
 	var dropbox = new Dropbox(DROPBOX_KEY, DROPBOX_SECRET);
 	dropbox.setDefaultError(error);
 	
-	var getlink = function() {
+	var getLink = function() {
 		dropbox.getDirectLink(path, success, error);
 	};
 	dropbox.authorize(getLink, error);

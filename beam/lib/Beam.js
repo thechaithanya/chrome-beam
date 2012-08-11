@@ -7,3 +7,5 @@ BEAM.extend  = function(Child, Parent) {
   Child.uber = Parent.prototype;
 }
 
+/* Bootstrappin Beam OS */
+BeamStorageManager.init();

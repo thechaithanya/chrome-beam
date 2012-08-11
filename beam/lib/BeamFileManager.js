@@ -1,9 +1,14 @@
-var BeamFile = function(filename,filetype){
+var BeamFile = function(filename,filetype,isDirectory,folderid,filesize,cloudService,fileurl){
 	this.name = filename;
 	this.type = filetype;
+	this.isDirectory = isDirectory;
+	this.folder=folderid;
+	this.filesize = filesize;
+	this.cloudService= cloudService;
+	this.fileurl = fileurl;
 }
 
-var BeamFileManger = {
+var BeamFileManager = {
 	currentFileCount : function() {
 			return BeamStorageManager.getFilesCollection().length;
 	},
@@ -13,11 +18,26 @@ var BeamFileManger = {
 	getFileType:function(fileid) {
 		BeamStorageManager.getFilesCollection()[fileid]["type"];
 	},
-	createFileEntry:function(name,type) {
-		var id = (this.currentFileCount())+1;
+	createFileEntry:function(fileid,name,type,isDirectory,folderid,filesize,fileurl) {
 		var files = BeamStorageManager.getFilesCollection();
-		files.push(new BeamFile(name,type));
+		var newFileEntry = new BeamFile(name,type,isDirectory,folderid,fileurl);
+		files.push();
 		BeamStorageManager.setFilesCollection(files);
+		return newFileEntry;
+	},
+	readDirectory:function(id){
+		var files = BeamStorageManager.getFilesCollection();
+		var containingFiles = new Array();
+		if(files[id].isDirectory()) {
+			for( key in files ) {
+				if(files[key].folderid===id){
+					containingFiles[key]=files[key];
+				}
+			}
+			return containingFiles;
+		} else {
+			console.log("Not a directory");
+		}
 	}
 }
 

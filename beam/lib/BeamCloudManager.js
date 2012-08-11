@@ -8,7 +8,7 @@ function BeamCloudInterface() {
 BeamCloudInterface.prototype.uploadFile = function(){}
 BeamCloudInterface.prototype.readFile = function(){}
 BeamCloudInterface.prototype.downloadFileLink = function(){}
-
+BeamCloudInterface.prototype.getRemainingSpace = function(){}
 /**
 Dropbox API Integration
 **/

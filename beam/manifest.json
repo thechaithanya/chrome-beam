@@ -17,20 +17,17 @@
   "permissions": [
     "unlimitedStorage",
     "tabs",
-    "https://www.dropbox.com/",
-    "https://api.dropbox.com/",
-    "https://api-content.dropbox.com/"
+    "<all_urls>",
+    "contextMenus"
   ],
   "icons": {
     "16": "icon_16.png",
     "128": "icon_128.png"
   },
   "offline_enabled" : true,
-  "permissions": [
-  	"contextMenus"
-  ],
   "background": {
     "scripts": ["background.js"]
-  }
 
+  },
+  "content_security_policy": "script-src 'self' https://raw.github.com/; object-src 'self'"
 }

@@ -1,7 +1,6 @@
 /*
 	Temporary Storage Mangement 
 */
-
 var BeamStorageManager = (function () {
   //Currently using local storage
   var storageInstance = localStorage;

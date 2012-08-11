@@ -34,9 +34,24 @@ var BeamStorageManager = (function () {
       },
       setFilesCollection:function(obj) {
       		storageInstance[filesCollectionKey] = JSON.stringify(obj);
+      },      
+      updateFilesCollection:function(key,value) {
+          var data = this.getCollection(filesCollectionKey);
+          data[key] = value;
+          storageInstance[filesCollectionKey] = JSON.stringify(data);
       },
       getUICollection:function() {
       		return this.getCollection(beamUIKey);
+      },
+      updateUICollection:function(key,value) {
+          var data = this.getCollection(beamUIKey);
+          data[key] = value;
+          storageInstance[beamUIKey] = JSON.stringify(data);
+      },
+      insertUICollection:function(key,value) {
+          var data = this.getCollection(beamUIKey);
+          data[key] = value;
+          storageInstance[beamUIKey] = JSON.stringify(data);
       }
    };
 })();

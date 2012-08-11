@@ -48,4 +48,7 @@ body {
     color: #eee;    
     vertical-align: bottom;
 }
+#navigator-modal .modal-body {
+    background: #222222;
+}
 

@@ -3,15 +3,23 @@
  */
  
 $(document).ready(function() {
+	
+	renderDesktop();
+
 	$('.draggable').draggable({containment: "parent"});
 	
-	$('.desktop-icon').hover(function(){
+	$('body').on('mouseenter','.desktop-icon',function(){
 		$('i',this).removeClass('icon-white');
-	}, function(){
+	});
+	$('body').on('mouseleave','.desktop-icon',function(){
 		$('i',this).addClass('icon-white');
 	});
+		
+	$('body').on('click','.desktop-folder',function(){		
+		openNavigator($(this).parent().attr('beam-id'), $(this).parent().attr('title'));
+	});
 	
-	$('.desktop-folder').click(function(){
-		openNavigator($(this));
+	$('body').on('click','#navigator-back-button',function(){
+		backNavigator();
 	});
 });

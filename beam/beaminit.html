@@ -25,6 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    
   </head>
 
   <body>
@@ -47,7 +48,8 @@
       </div>
     </div>
 -->
-    <div class="desktop-container">    
+    <div class="desktop-container">
+    <!--    
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-film icon-white"></i></div><p>Video</p></div>
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-music icon-white"></i></div><p>Music</p></div>
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-heart icon-white"></i></div><p>Favorite</p></div>
@@ -59,22 +61,32 @@
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-file icon-white"></i></div><p>Document</p></div>
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-question-sign icon-white"></i></div><p>Unknown Format</p></div>
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-font icon-white"></i></div><p>Text</p></div>
-			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class=" icon-briefcase icon-white"></i></div><p>Archive</p></div>
+			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-briefcase icon-white"></i></div><p>Archive</p></div>
 			<div class="draggable desktop-element"><div class="desktop-icon roundborder"><i class="icon-th-large icon-white"></i></div><p>App</p></div>
+	-->
     </div> <!-- /container -->
     
-    <div id='navigator-modal'>
+	<div id="navigator-modal" class="modal hide fade" style="display: none;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">×</button>              
+              <h3 class="modal-title">Beam Navigator</h3>
+            </div>
+            <div class="modal-body">
+            	Welcome to Beam Navigator!
+            </div>
+            <div class="modal-footer">
+              <button id='navigator-back-button' type="button" value="Back" class="btn pull-left" disabled="disabled"><i class="icon-arrow-left"></i>Back</button>
+              <a href="#" class="btn" data-dismiss="modal">Close</a>
+            </div>
     </div>
-	
+	    
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/BeamCloudConfig.js" type="text/javascript"></script>
-    <script src="lib/BeamStorageManager.js"></script>  
-    <script src="lib/Beam.js"></script>
-    <script src="lib/BeamFileManager.js"></script>
-    <script src="lib/BeamCloudManager.js"></script>
+    
+    <!-- Le thirdparty libraries -->    
     <script src="bootstrap/js/jquery-1.7.1.js"></script>
+    <script src="js/jquery-ui-1.8.22.custom.min.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
     <script src="bootstrap/js/bootstrap-modal.js"></script>
@@ -86,16 +98,25 @@
     <script src="bootstrap/js/bootstrap-button.js"></script>
     <script src="bootstrap/js/bootstrap-collapse.js"></script>
     <script src="bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>    
     
-    <script src="js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="js/BeamController.js"></script>
-    <script src="js/BeamModel.js"></script>
+    <!-- Le beam libraries -->
+    <script src="lib/BeamStorageManager.js"></script>    
+    <script src="lib/Beam.js"></script>
+    <script src="lib/BeamCloudConfig.js" type="text/javascript"></script>
+    <script src="lib/BeamCloudManager.js"></script>          
+    <script src="lib/BeamFileManager.js"></script>
 
-    <!--related to drop ox  -->
+    <!-- Le Drop Box API  -->
     <script src="lib/DropBoxAPIs/sha1.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/DropBoxAPIs/oauth.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/DropBoxAPIs/oauth-request.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/DropBoxAPIs/dropbox.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- Le UI related js -->	
+    <script src="js/BeamController.js"></script>
+    <script src="js/BeamModel.js"></script>
+    
+	
   </body>
 </html>

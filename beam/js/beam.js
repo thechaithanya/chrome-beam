@@ -1,6 +1,8 @@
-chrome.experimental.app.onLaunched.addListener(function() {
-  chrome.app.window.create('beaminit.html', {
-    'width': 400,
-    'height': 500
-  });
+$(document).ready(function() {
+	$('.draggable').draggable({containment: "parent"});
+	$('.desktop-icon').hover(function(){
+		$('i',this).removeClass('icon-white');
+	}, function(){
+		$('i',this).addClass('icon-white');
+	});
 });

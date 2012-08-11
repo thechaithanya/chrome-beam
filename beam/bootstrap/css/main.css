@@ -1,7 +1,10 @@
+body {
+    background: #222222;
+}
 .roundborder{
-                background:#ffffff;
-                border-radius: 6px 6px 6px 6px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    background:#ffffff;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 }
 .desktop-container{
     width:100%;
@@ -12,7 +15,6 @@
     margin: auto;    
     padding-top: 10px;
 }
-
 .desktop-panel{
     width:1024px;
     height:580px;
@@ -23,10 +25,10 @@
 .desktop-element{
     background-color: transparent;
     width: 80px;
+    height: 90px;
     text-align: center;
     float: left;
 }
-
 .desktop-icon{
     background-color: transparent;
     width: 40px;
@@ -42,12 +44,8 @@
 .desktop-icon:hover {
     background-color: #cdcdcd;
 }
-
 .desktop-element > p {
     color: #eee;    
     vertical-align: bottom;
 }
 
-body {
-    background: #222222;
-}

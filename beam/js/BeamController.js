@@ -1,3 +1,7 @@
+/*
+ * All the UI related javascript event bindings are here
+ */
+ 
 $(document).ready(function() {
 	$('.draggable').draggable({containment: "parent"});
 	

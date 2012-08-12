@@ -1,6 +1,18 @@
 function saveToBeamHandler(info, tab)
 {
 	console.log(info);
+	var viewTabURL = chrome.extension.getURL('beaminit.html');
+	var views = chrome.extension.getViews();
+	var currentView = null;
+	for(var i=0; i<views.length; i++) {
+		var view = views[i];
+		if(view.location.href == viewTabURL)
+		{
+			currentView = view;
+			break;
+		}
+	}
+	
 	if(info.selectionText)
 	{
 		var enteredname = prompt("Enter file name");
@@ -12,8 +24,8 @@ function saveToBeamHandler(info, tab)
 			isDirectory:false,
 			fileurl:null
 		}
-		BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
-		alert("Selected text: "+info.selectionText);
+		console.log(options);
+		currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);		
 	}
 	else if(info.linkUrl)
 	{
@@ -26,8 +38,7 @@ function saveToBeamHandler(info, tab)
 			isDirectory:false,
 			fileurl:info.linkUrl
 		}
-		BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
-		alert("Selected link: "+info.linkUrl);
+		currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);		
 	}
 	else if(info.mediaType)
 	{
@@ -42,8 +53,8 @@ function saveToBeamHandler(info, tab)
 					isDirectory:false,
 					fileurl:info.srcUrl
 				}
-				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
-				alert("Selected image: "+info.srcUrl); break;
+				currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				break;	
 
 			case 'video' :
 				var enteredname = prompt("Enter file name");
@@ -54,8 +65,8 @@ function saveToBeamHandler(info, tab)
 					isDirectory:false,
 					fileurl:info.srcUrl
 				}
-				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
-				alert("Selected image: "+info.srcUrl); break;
+				currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				break;				
 
 			case 'audio' : 
 				var enteredname = prompt("Enter file name");
@@ -66,8 +77,8 @@ function saveToBeamHandler(info, tab)
 					isDirectory:false,
 					fileurl:info.srcUrl
 				}
-				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
-				alert("Selected image: "+info.srcUrl); break;	
+				currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				break;	
 		}
 	}
 	else
@@ -86,7 +97,7 @@ function saveToBeamHandler(info, tab)
 					fileurl:matches[1],
 					embedded:true
 			}
-			BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl,options.embedded);	
+			currentView.BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl,options.embedded);	
 			alert("Youtube video:" + matches[1]);
 		}
 		

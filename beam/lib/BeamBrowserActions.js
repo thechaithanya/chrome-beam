@@ -15,7 +15,7 @@ var BeamBrowserActions = {
 
 		//Second_Step: Create an entery in the files collection
 		function onLocalSaveSuccess(mimetype,filesize,data){
-			var fileentry = BeamFileManager.createFileEntry(FILE_ID,FILE_NAME,mimetype,isDirectory,folderid,filesize,fileurl,embedded);
+			var fileentry = BeamFileManager.createFileEntry(FILE_ID,name,mimetype,isDirectory,folderid,filesize,fileurl,embedded);
 			if(fileentry.cloudService===DROPBOX_SERVICE_NAME){
 				BeamCloudManager.dropbox.uploadFile(FILE_NAME, data, function(){
 					console.log("Uploaded to Dropbox successfully;");

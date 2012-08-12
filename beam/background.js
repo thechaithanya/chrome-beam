@@ -17,25 +17,76 @@ function saveToBeamHandler(info, tab)
 	}
 	else if(info.linkUrl)
 	{
+		var enteredname = prompt("Enter file name");
+
+		var options = {
+			name: enteredname,
+			folderid:3,
+			content:null,
+			isDirectory:false,
+			fileurl:info.linkUrl
+		}
+		BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
 		alert("Selected link: "+info.linkUrl);
 	}
 	else if(info.mediaType)
 	{
 		switch(info.mediaType)
 		{
-			case 'image' : alert("Selected image: "+info.srcUrl); break;
-			case 'video' : alert("Selected image: "+info.srcUrl); break;
-			case 'audio' : alert("Selected image: "+info.srcUrl); break;
+			case 'image' : 
+				var enteredname = prompt("Enter file name");
+				var options = {
+					name: enteredname,
+					folderid:1,
+					content:null,
+					isDirectory:false,
+					fileurl:info.srcUrl
+				}
+				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				alert("Selected image: "+info.srcUrl); break;
+
+			case 'video' :
+				var enteredname = prompt("Enter file name");
+				var options = {
+					name: enteredname,
+					folderid:2,
+					content:null,
+					isDirectory:false,
+					fileurl:info.srcUrl
+				}
+				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				alert("Selected image: "+info.srcUrl); break;
+
+			case 'audio' : 
+				var enteredname = prompt("Enter file name");
+				var options = {
+					name: enteredname,
+					folderid:6,
+					content:null,
+					isDirectory:false,
+					fileurl:info.srcUrl
+				}
+				BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
+				alert("Selected image: "+info.srcUrl); break;	
 		}
 	}
 	else
 	{
 		pageUrl = info.pageUrl;
-		
 		// Special handling for Youtube videos
 		matches = pageUrl.match(/(?:http:\/\/)?(?:(?:www\.)?youtube\.com\/watch\?)(?:.*)v=([a-zA-Z0-9_-]*)/);
 		if(matches != null && matches.length > 0)
 		{
+			var enteredname = prompt("Enter file name");
+			var options = {
+					name: enteredname,
+					folderid:6,
+					content:null,
+					isDirectory:false,
+					fileurl:matches[1],
+					embedded:true
+			}
+			BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl,options.embedded);	
 			alert("Youtube video:" + matches[1]);
 		}
 		

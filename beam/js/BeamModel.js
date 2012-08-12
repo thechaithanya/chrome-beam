@@ -10,7 +10,7 @@ function renderFilesHTML(files)
 	for(var i=0; i<count; i++) {
 		var obj = files[i];
 		var icon = null;
-		var folderclass = "";
+		var filefolderclass = "desktop-file";
 		switch(obj.type)
 		{
 			case 'video'   : icon='icon-film'; break;
@@ -24,7 +24,7 @@ function renderFilesHTML(files)
 			case 'favorite': icon='icon-heart'; break;
 			case 'bookmark': icon='icon-bookmark'; break;
 			
-			case 'folder'  : icon='icon-folder-open'; folderclass='desktop-folder'; break;
+			case 'folder'  : icon='icon-folder-open'; filefolderclass='desktop-folder'; break;
 			case 'link'    : icon='icon-globe'; break;
 			case 'email'   : icon='icon-envelope'; break;
 			case 'file'    : icon='icon-file'; break;
@@ -36,16 +36,16 @@ function renderFilesHTML(files)
 			default        : icon='icon-question-sign'; break;
 		}
 		if(obj.type==="drive") {
-			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image drive-icon '+folderclass+'"></div><p>'+obj.title+'</p></div>';
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image drive-icon '+filefolderclass+'"></div><p>'+obj.title+'</p></div>';
 		}else {
-			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+folderclass+'"><i class="'+icon+' icon-white"></i></div><p style="margin-top:-1px">'+obj.title+'</p></div>';
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+filefolderclass+'"><i class="'+icon+' icon-white"></i></div><p style="margin-top:-1px">'+obj.title+'</p></div>';
 		}
 	}	
 	return html;					 	
 }
 function renderDesktop()
 {
-	/* Creating Desktop Folder amd Music Folder */
+	/* Creating Desktop Folder and Music Folder */
 	if(BeamFileManager.currentFileCount()==0) {
 		BeamFileManager.createFileEntry(0,"CloudDrive","drive",true,1,null,null);
 		BeamFileManager.createFileEntry(1,"Desktop","folder",true,0,null,null);
@@ -126,8 +126,22 @@ function backNavigator()
 	{
 		nav = navHistoryStack.pop();	
 		currentNavigator = null;	
-		console.log(nav);
-		console.log(navHistoryStack);
 		openNavigator(nav.beamId, nav.title);
 	}
+}
+function openFile(beamid)
+{
+	var file = BeamStorageManager.getFilesCollection()[beamid];
+	var url = file.fileurl;
+	var name = file.name;
+	$('#file-opener-iframe > iframe').attr('src',url);	
+	$('#file-opener-iframe .iframe-header').html("<h6>"+name+"</h6>");
+	$('#file-opener-iframe').fadeIn();		
+	$('#file-opener-iframe').draggable();
+}
+function closeCurrentFile()
+{
+	$('#file-opener-iframe').fadeOut();
+	$('#file-opener-iframe > iframe').attr('src','');	
+	$('#file-opener-iframe .iframe-header').html("");
 }

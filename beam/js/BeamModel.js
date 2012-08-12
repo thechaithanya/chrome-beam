@@ -41,6 +41,7 @@ function renderDesktop()
 		BeamFileManager.createFileEntry(3,"Bookmarks","folder",true,0,null,null);
 		BeamFileManager.createFileEntry(4,"Documents","folder",true,0,null,null);
 		BeamFileManager.createFileEntry(5,"PDF","folder",true,4,null,null);
+		BeamFileManager.createFileEntry(6,"Music","folder",true,0,null,null);
 	}
 	var desktopfilesentries = BeamFileManager.readDirectory(0);
 	var desktopfiles = new Array();

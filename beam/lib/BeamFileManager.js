@@ -1,4 +1,4 @@
-var BeamFile = function(filename,filetype,isDirectory,folderid,filesize,cloudService,fileurl){
+var BeamFile = function(filename,filetype,isDirectory,folderid,filesize,cloudService,fileurl,embedded){
 	this.name = filename;
 	this.type = filetype;
 	this.isDirectory = isDirectory;
@@ -6,6 +6,7 @@ var BeamFile = function(filename,filetype,isDirectory,folderid,filesize,cloudSer
 	this.filesize = filesize;
 	this.cloudService= cloudService;
 	this.fileurl = fileurl;
+	this.embedded = embedded;
 }
 
 var BeamFileManager = {
@@ -18,10 +19,10 @@ var BeamFileManager = {
 	getFileType:function(fileid) {
 		BeamStorageManager.getFilesCollection()[fileid]["type"];
 	},
-	createFileEntry:function(fileid,name,type,isDirectory,folderid,filesize,fileurl) {
+	createFileEntry:function(fileid,name,type,isDirectory,folderid,filesize,fileurl,embedded) {
 		var files = BeamStorageManager.getFilesCollection();
 		var cloudService = BeamCloudStorageAllocator.getAvailableCloudService();
-		var newFileEntry = new BeamFile(name,type,isDirectory,folderid,filesize,cloudService,fileurl);
+		var newFileEntry = new BeamFile(name,type,isDirectory,folderid,filesize,cloudService,fileurl,embedded);
 		files.push(newFileEntry);
 		BeamStorageManager.setFilesCollection(files);
 		return newFileEntry;

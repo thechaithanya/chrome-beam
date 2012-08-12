@@ -1,5 +1,5 @@
 body {
-    background: url("../../bootstrap/img/desktop-wallpaper.jpg") no-repeat;
+    background: url("../../bootstrap/img/desktop-wallpaper.png") no-repeat;
 }
 .roundborder{
     background:#ffffff;
@@ -52,6 +52,7 @@ body {
 }
 #navigator-modal .modal-body {
     background: #222222;
+    min-height: 250px;
 }
 .drive-image{
     background: url("../../bootstrap/img/cloudspace.png") no-repeat;
@@ -75,4 +76,10 @@ body {
     top: -12px;
     left: 836px;
     cursor: pointer;
+}
+.folder-image {
+    background: url("../../bootstrap/img/folder.png") no-repeat;
+    height: 50px;
+    margin-left: 15px;
+    cursor:pointer; 
 }

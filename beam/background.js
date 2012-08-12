@@ -19,7 +19,7 @@ function saveToBeamHandler(info, tab)
 
 		var options = {
 			name: enteredname,
-			folderid:0,
+			folderid:1,
 			content:info.selectionText,
 			isDirectory:false,
 			fileurl:null
@@ -33,7 +33,7 @@ function saveToBeamHandler(info, tab)
 
 		var options = {
 			name: enteredname,
-			folderid:3,
+			folderid:4,
 			content:null,
 			isDirectory:false,
 			fileurl:info.linkUrl
@@ -48,7 +48,7 @@ function saveToBeamHandler(info, tab)
 				var enteredname = prompt("Enter file name");
 				var options = {
 					name: enteredname,
-					folderid:1,
+					folderid:2,
 					content:null,
 					isDirectory:false,
 					fileurl:info.srcUrl
@@ -60,7 +60,7 @@ function saveToBeamHandler(info, tab)
 				var enteredname = prompt("Enter file name");
 				var options = {
 					name: enteredname,
-					folderid:2,
+					folderid:3,
 					content:null,
 					isDirectory:false,
 					fileurl:info.srcUrl
@@ -72,7 +72,7 @@ function saveToBeamHandler(info, tab)
 				var enteredname = prompt("Enter file name");
 				var options = {
 					name: enteredname,
-					folderid:6,
+					folderid:7,
 					content:null,
 					isDirectory:false,
 					fileurl:info.srcUrl
@@ -91,7 +91,7 @@ function saveToBeamHandler(info, tab)
 			var enteredname = prompt("Enter file name");
 			var options = {
 					name: enteredname,
-					folderid:6,
+					folderid:7,
 					content:null,
 					isDirectory:false,
 					fileurl:matches[1],

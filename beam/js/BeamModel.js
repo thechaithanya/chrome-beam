@@ -36,7 +36,7 @@ function renderFilesHTML(files)
 			default        : icon='icon-question-sign'; break;
 		}
 		if(obj.type==="drive") {
-			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image '+folderclass+'"></div><p>'+obj.title+'</p></div>';
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image drive-icon '+folderclass+'"></div><p>'+obj.title+'</p></div>';
 		}else {
 			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+folderclass+'"><i class="'+icon+' icon-white"></i></div><p style="margin-top:-1px">'+obj.title+'</p></div>';
 		}
@@ -47,16 +47,16 @@ function renderDesktop()
 {
 	/* Creating Desktop Folder amd Music Folder */
 	if(BeamFileManager.currentFileCount()==0) {
-		BeamFileManager.createFileEntry(-1,"CloudDrive","drive",true,0,null,null);
-		BeamFileManager.createFileEntry(0,"Desktop","folder",true,-1,null,null);
-		BeamFileManager.createFileEntry(1,"Images","folder",true,0,null,null);
-		BeamFileManager.createFileEntry(2,"Videos","folder",true,0,null,null);
-		BeamFileManager.createFileEntry(3,"Bookmarks","folder",true,0,null,null);
-		BeamFileManager.createFileEntry(4,"Documents","folder",true,0,null,null);
-		BeamFileManager.createFileEntry(5,"PDF","folder",true,4,null,null);
-		BeamFileManager.createFileEntry(6,"Music","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(0,"CloudDrive","drive",true,1,null,null);
+		BeamFileManager.createFileEntry(1,"Desktop","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(2,"Images","folder",true,1,null,null);
+		BeamFileManager.createFileEntry(3,"Videos","folder",true,1,null,null);
+		BeamFileManager.createFileEntry(4,"Bookmarks","folder",true,1,null,null);
+		BeamFileManager.createFileEntry(5,"Documents","folder",true,1,null,null);
+		BeamFileManager.createFileEntry(6,"PDF","folder",true,5,null,null);
+		BeamFileManager.createFileEntry(7,"Music","folder",true,1,null,null);
 	}
-	var desktopfilesentries = BeamFileManager.readDirectory(0);
+	var desktopfilesentries = BeamFileManager.readDirectory(1);
 	var desktopfiles = new Array();
 	for(key in desktopfilesentries) {
 		if(key!=undefined){

@@ -1,4 +1,4 @@
-function BeamBrowserActions = {
+var BeamBrowserActions = {
 	processBrowserSaveAs:function(name,folderid,isDirectory,content,fileurl){
 		//First Step: Dowloading the file to local storage
 		//TODO:Ensure this id is not taken by next download

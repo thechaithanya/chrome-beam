@@ -3,6 +3,16 @@ function saveToBeamHandler(info, tab)
 	console.log(info);
 	if(info.selectionText)
 	{
+		var enteredname = prompt("Enter file name");
+
+		var options = {
+			name: enteredname,
+			folderid:0,
+			content:info.selectionText,
+			isDirectory:false,
+			fileurl:null
+		}
+		BeamBrowserActions.processBrowserSaveAs(options.name,options.folderid,options.isDirectory,options.content,options.fileurl);
 		alert("Selected text: "+info.selectionText);
 	}
 	else if(info.linkUrl)

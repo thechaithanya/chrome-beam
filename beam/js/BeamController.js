@@ -18,6 +18,11 @@ $(document).ready(function() {
 	$('body').on('click','.desktop-folder',function(){		
 		openNavigator($(this).parent().attr('beam-id'), $(this).parent().attr('title'));
 	});
+
+	$('body').on('click','.drive-icon',function(){		
+		openNavigator($(this).parent().attr('beam-id'), $(this).parent().attr('title'));
+	});
+	
 	
 	$('body').on('click','#navigator-back-button',function(){
 		backNavigator();

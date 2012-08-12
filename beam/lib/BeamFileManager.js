@@ -2,7 +2,7 @@ var BeamFile = function(filename,filetype,isDirectory,folderid,filesize,cloudSer
 	this.name = filename;
 	this.type = filetype;
 	this.isDirectory = isDirectory;
-	this.folder=folderid;
+	this.folderid=folderid;
 	this.filesize = filesize;
 	this.cloudService= cloudService;
 	this.fileurl = fileurl;
@@ -20,17 +20,19 @@ var BeamFileManager = {
 	},
 	createFileEntry:function(fileid,name,type,isDirectory,folderid,filesize,fileurl) {
 		var files = BeamStorageManager.getFilesCollection();
-		var newFileEntry = new BeamFile(name,type,isDirectory,folderid,fileurl);
-		files.push();
+		var cloudService = BeamCloudStorageAllocator.getAvailableCloudService();
+		var newFileEntry = new BeamFile(name,type,isDirectory,folderid,filesize,cloudService,fileurl);
+		files.push(newFileEntry);
 		BeamStorageManager.setFilesCollection(files);
 		return newFileEntry;
 	},
 	readDirectory:function(id){
+		id = parseInt(id,10);
 		var files = BeamStorageManager.getFilesCollection();
 		var containingFiles = new Array();
-		if(files[id].isDirectory()) {
+		if(files[id].isDirectory) {
 			for( key in files ) {
-				if(files[key].folderid===id){
+				if(files[key].folderid!=null && files[key].folderid===id){
 					containingFiles[key]=files[key];
 				}
 			}
@@ -40,4 +42,3 @@ var BeamFileManager = {
 		}
 	}
 }
-

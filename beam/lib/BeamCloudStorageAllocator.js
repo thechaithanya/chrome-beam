@@ -1,5 +1,6 @@
 var BeamCloudStorageAllocator = {
 	getAvailableCloudService : function(contentsize) {
+		return DROPBOX_SERVICE_NAME;
 	 	try {
 	 		var dropboxspace = BeamCloudManager.dropbox.getSpaceRemaining();
 	 		if(contentsize<=dropboxspace) {

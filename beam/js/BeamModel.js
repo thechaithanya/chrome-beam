@@ -27,7 +27,11 @@ function renderFilesHTML(files)
 			case 'app'     : icon='icon-th-large'; break;
 			default        : icon='icon-question-sign'; break;
 		}
-		html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+folderclass+'"><i class="'+icon+' icon-white"></i></div><p>'+obj.title+'</p></div>';
+		if(obj.type==="drive") {
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image '+folderclass+'"></div><p>'+obj.title+'</p></div>';
+		}else {
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+folderclass+'"><i class="'+icon+' icon-white"></i></div><p style="margin-top:-1px">'+obj.title+'</p></div>';
+		}
 	}	
 	return html;					 	
 }
@@ -35,7 +39,8 @@ function renderDesktop()
 {
 	/* Creating Desktop Folder amd Music Folder */
 	if(BeamFileManager.currentFileCount()==0) {
-		BeamFileManager.createFileEntry(0,"Desktop","folder",true,null,null,null);
+		BeamFileManager.createFileEntry(-1,"CloudDrive","drive",true,0,null,null);
+		BeamFileManager.createFileEntry(0,"Desktop","folder",true,-1,null,null);
 		BeamFileManager.createFileEntry(1,"Images","folder",true,0,null,null);
 		BeamFileManager.createFileEntry(2,"Videos","folder",true,0,null,null);
 		BeamFileManager.createFileEntry(3,"Bookmarks","folder",true,0,null,null);

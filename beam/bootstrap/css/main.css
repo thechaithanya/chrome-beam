@@ -56,4 +56,5 @@ body {
     background: url("../../bootstrap/img/cloudspace.png") no-repeat;
     height: 50px;
     margin-left: 15px;
+    cursor:pointer;
 }

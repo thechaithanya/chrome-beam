@@ -29,7 +29,10 @@ function renderFilesHTML(files)
 		}
 		if(obj.type==="drive") {
 			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="drive-image drive-icon '+folderclass+'"></div><p>'+obj.title+'</p></div>';
-		}else {
+		}else if(obj.type==="folder"){
+			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="folder-image drive-icon '+folderclass+'"></div><p>'+obj.title+'</p></div>';	
+		}
+		else {
 			html += '<div class="draggable desktop-element" beam-id="'+obj.beamId+'" title="'+obj.title+'"><div class="desktop-icon roundborder '+folderclass+'"><i class="'+icon+' icon-white"></i></div><p style="margin-top:-1px">'+obj.title+'</p></div>';
 		}
 	}	

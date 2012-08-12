@@ -13,7 +13,8 @@ body {
     max-height: 800px;
     background: transparent;
     margin: auto;    
-    padding-top: 10px;
+    padding-top: 40px;
+    padding-left: 60px;
 }
 .desktop-panel{
     width:1024px;

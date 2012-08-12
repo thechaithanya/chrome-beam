@@ -9,8 +9,12 @@ var BeamStorageManager = (function () {
   var beamUIKey = "Beam_UI";
 
   function initializeStorage(){
-  	storageInstance[filesCollectionKey]=JSON.stringify(new Array());
-  	storageInstance[beamUIKey]=JSON.stringify({});
+    if(storageInstance[filesCollectionKey]==undefined){
+  	 storageInstance[filesCollectionKey]=JSON.stringify(new Array());
+  	}
+    if(storageInstance[beamUIKey]==undefined){
+      storageInstance[beamUIKey]=JSON.stringify({});
+    }
   	console.log("Storage Initialized");
   }
 

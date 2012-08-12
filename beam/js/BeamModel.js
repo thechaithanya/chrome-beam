@@ -33,6 +33,23 @@ function renderFilesHTML(files)
 }
 function renderDesktop()
 {
+	/* Creating Desktop Folder amd Music Folder */
+	if(BeamFileManager.currentFileCount()==0) {
+		BeamFileManager.createFileEntry(0,"Desktop","folder",true,null,null,null);
+		BeamFileManager.createFileEntry(1,"Images","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(2,"Videos","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(3,"Bookmarks","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(4,"Documents","folder",true,0,null,null);
+		BeamFileManager.createFileEntry(5,"PDF","folder",true,4,null,null);
+	}
+	var desktopfilesentries = BeamFileManager.readDirectory(0);
+	var desktopfiles = new Array();
+	for(key in desktopfilesentries) {
+		if(key!=undefined){
+			desktopfiles.push({beamId:key,title:desktopfilesentries[key].name,type:desktopfilesentries[key].type});
+		}
+	}
+	/*
 	var desktopfiles = [ {beamId: '12345',
 						  title : 'Hello World',
 						  type  : 'image'},
@@ -41,11 +58,13 @@ function renderDesktop()
 						  type  : 'folder'},
 						 {beamId: '13256',
 						  title : 'Hello World 3',
-						  type  : 'link'} ];	 
+						  type  : 'link'} ];
+	*/	 
 	$('.desktop-container').html(renderFilesHTML(desktopfiles));
 }
 function renderNavigator(scandir, nav)
 {
+	/*
 	var dirfiles = [ {beamId: '12345',
 						  title : 'World',
 						  type  : 'image'},
@@ -55,8 +74,9 @@ function renderNavigator(scandir, nav)
 						 {beamId: '13256',
 						  title : 'World 3',
 						  type  : 'link'} ];
+	*/
 	$('#navigator-modal .modal-header .modal-title').html(nav.title);
-	$('#navigator-modal .modal-body').html(renderFilesHTML(dirfiles));
+	$('#navigator-modal .modal-body').html(renderFilesHTML(scandir));
 	if(navHistoryStack.length > 0)
 		$('#navigator-modal #navigator-back-button').removeAttr("disabled");
 	else									  
@@ -64,7 +84,14 @@ function renderNavigator(scandir, nav)
 }
 function getDirectoryListing(beamid)
 {
-	return "text";
+	var desktopfilesentries = BeamFileManager.readDirectory(beamid);
+	var desktopfiles = new Array();
+	for(key in desktopfilesentries) {
+		if(key!=undefined){
+			desktopfiles.push({beamId:key,title:desktopfilesentries[key].name,type:desktopfilesentries[key].type});
+		}
+	}
+	return desktopfiles;
 }
 function openNavigator(beamid, title)
 {

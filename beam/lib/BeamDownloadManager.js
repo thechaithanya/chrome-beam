@@ -60,7 +60,7 @@ function saveFileLocally(data,mimetype,filename,callback) {
 			      writer.onprogress = function() { console.log("Writing to file...") };  
 			      writer.onwrite = function(e) {
 			      	console.log("Write completed.");
-			      	callback(mimetype,data.length);
+			      	callback(mimetype,data.length,data);
 			  	  };  
 			      writer.onerror = function(e) { }; 
 			      bb = new WebKitBlobBuilder;

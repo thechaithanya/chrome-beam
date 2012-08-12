@@ -13,15 +13,23 @@ function renderFilesHTML(files)
 		var folderclass = "";
 		switch(obj.type)
 		{
-			case 'video'   : icon='icon-film'; break; 
-			case 'image'   : icon='icon-music'; break;
+			case 'video'   : icon='icon-film'; break;
+			case 'audio'   : icon='icon-music'; break;					
+				
+			case 'image/png' :
+			case 'image/gif' :
+			case 'image/jpeg': 
+			case 'image'     : icon='icon-picture'; break;
+			
 			case 'favorite': icon='icon-heart'; break;
 			case 'bookmark': icon='icon-bookmark'; break;
+			
 			case 'folder'  : icon='icon-folder-open'; folderclass='desktop-folder'; break;
 			case 'link'    : icon='icon-globe'; break;
 			case 'email'   : icon='icon-envelope'; break;
 			case 'file'    : icon='icon-file'; break;
 			case 'unknown' : icon='icon-question-sign'; break;
+			
 			case 'text'    : icon='icon-font'; break;
 			case 'archive' : icon='icon-briefcase'; break;
 			case 'app'     : icon='icon-th-large'; break;

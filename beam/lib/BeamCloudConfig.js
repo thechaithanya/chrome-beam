@@ -1,5 +1,5 @@
-var DROPBOX_KEY = 'a6dexeiecvxxgpl';
-var DROPBOX_SECRET = '263jpoz081zq7mr';
+var DROPBOX_KEY = 'ozob9m3dg0be3t9';
+var DROPBOX_SECRET = 'x4axb71duf153hy';
 
 var DROPBOX_SERVICE_NAME = "DROPBOX";
 var SKYDRIVE_SERVICE_NAME = "SKYDRIVE";

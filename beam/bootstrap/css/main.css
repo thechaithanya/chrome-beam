@@ -52,4 +52,8 @@ body {
 #navigator-modal .modal-body {
     background: #222222;
 }
-
+.drive-image{
+    background: url("../../bootstrap/img/cloudspace.png") no-repeat;
+    height: 50px;
+    margin-left: 15px;
+}

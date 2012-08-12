@@ -29,6 +29,7 @@ body {
     height: 90px;
     text-align: center;
     float: left;
+    cursor: pointer;
 }
 .desktop-icon{
     background-color: transparent;
@@ -57,4 +58,21 @@ body {
     height: 50px;
     margin-left: 15px;
     cursor:pointer;
+}
+#file-opener-iframe {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    background-color: white;
+}
+#file-opener-iframe .iframe-header {
+    width: 850px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+#file-opener-iframe .iframe-close {
+    position: absolute;
+    top: -12px;
+    left: 836px;
+    cursor: pointer;
 }

@@ -3,6 +3,8 @@
  */
 var navHistoryStack = new Array();
 var currentNavigator = null;
+//setInterval(function(){console.log(navHistoryStack);},3000);
+//setInterval(function(){console.log(currentNavigator);},3000);
 function renderFilesHTML(files)
 {
 	var html = "";
@@ -67,32 +69,11 @@ function renderDesktop()
 			desktopfiles.push({beamId:key,title:desktopfilesentries[key].name,type:desktopfilesentries[key].type});
 		}
 	}
-	/*
-	var desktopfiles = [ {beamId: '12345',
-						  title : 'Hello World',
-						  type  : 'image'},
-						 {beamId: '13455',
-						  title : 'Hello World 234234',
-						  type  : 'folder'},
-						 {beamId: '13256',
-						  title : 'Hello World 3',
-						  type  : 'link'} ];
-	*/	 
+	
 	$('.desktop-container').html(renderFilesHTML(desktopfiles));
 }
 function renderNavigator(scandir, nav)
 {
-	/*
-	var dirfiles = [ {beamId: '12345',
-						  title : 'World',
-						  type  : 'image'},
-						 {beamId: '13455',
-						  title : 'World 234234',
-						  type  : 'folder'},
-						 {beamId: '13256',
-						  title : 'World 3',
-						  type  : 'link'} ];
-	*/
 	$('#navigator-modal .modal-header .modal-title').html(nav.title);
 	$('#navigator-modal .modal-body').html(renderFilesHTML(scandir));
 	if(navHistoryStack.length > 0)
@@ -113,6 +94,8 @@ function getDirectoryListing(beamid)
 }
 function openNavigator(beamid, title)
 {
+	console.log(currentNavigator);
+	console.log(navHistoryStack);
 	if(currentNavigator)
 		navHistoryStack.push(currentNavigator);
 		
@@ -132,6 +115,11 @@ function backNavigator()
 		currentNavigator = null;	
 		openNavigator(nav.beamId, nav.title);
 	}
+}
+function resetNavigator()
+{
+	navHistoryStack = new Array();
+	currentNavigator = null;
 }
 function openFile(beamid)
 {

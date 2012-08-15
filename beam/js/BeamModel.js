@@ -25,6 +25,7 @@ function renderFilesHTML(files)
 			case 'bookmark': icon='icon-bookmark'; break;
 			
 			case 'folder'  : icon='icon-folder-open'; filefolderclass='desktop-folder'; break;
+			case 'drive'   : filefolderclass='desktop-folder'; break;
 			case 'link'    : icon='icon-globe'; break;
 			case 'email'   : icon='icon-envelope'; break;
 			case 'file'    : icon='icon-file'; break;
@@ -134,6 +135,7 @@ function backNavigator()
 }
 function openFile(beamid)
 {
+	$('#navigator-modal').modal('hide');
 	var file = BeamStorageManager.getFilesCollection()[beamid];
 	var url = file.fileurl;
 	var name = file.name;

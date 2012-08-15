@@ -15,14 +15,10 @@ $(document).ready(function() {
 		$('i',this).addClass('icon-white');
 	});
 		
-	$('body').on('click','.desktop-folder',function(){		
+	$('body').on('click','.desktop-folder, .drive-icon',function(){		
 		openNavigator($(this).parent().attr('beam-id'), $(this).parent().attr('title'));
 	});
 
-	$('body').on('click','.drive-icon',function(){		
-		openNavigator($(this).parent().attr('beam-id'), $(this).parent().attr('title'));
-	});
-	
 	$('body').on('click','#navigator-back-button',function(){
 		backNavigator();
 	});
@@ -34,4 +30,9 @@ $(document).ready(function() {
 	$('body').on('click','.iframe-close',function(){	
 		closeCurrentFile();
 	});
+	
+	$('#navigator-modal').on('hidden', function(){
+		resetNavigator();
+	});
+
 });

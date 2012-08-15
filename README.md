@@ -34,3 +34,7 @@ Note: When you use Beam OS for the first time, it will ask you to login into you
 Credits
 =======
 Beam OS was developed in just 24 hours by Team Arkene during Yahoo Open Hack Day 2012 in Bangalore, India. Team behind Beam OS - Abhishek Shrivastava, Sumit Ranjan and Akash Chauhan - all graduates from NIT Trichy in 2011.
+
+Legal
+=====
+This software is licensed under GNU GPL v3. For more information, please see the NOTICE and LICENSE files.

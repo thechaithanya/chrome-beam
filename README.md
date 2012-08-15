@@ -31,10 +31,10 @@ Beam OS adds a "Save To Beam" option in your context menu (the right-click menu)
 
 Note: When you use Beam OS for the first time, it will ask you to login into your Dropbox and link Beam OS to Dropbox. This is only a one time step and will not be required again.
 
-Credits
-=======
-Beam OS was developed in just 24 hours by Team Arkene during Yahoo Open Hack Day 2012 in Bangalore, India. Team behind Beam OS - Abhishek Shrivastava, Sumit Ranjan and Akash Chauhan - all graduates from NIT Trichy in 2011.
-
 Legal
 =====
 This software is licensed under GNU GPL v3. For more information, please see the NOTICE and LICENSE files.
+
+Credits
+=======
+[Abhishek Shrivastava](http://github.com/abhishekdelta), [Sumit Ranjan](http://github.com/coderush), [Akash Chauhan](http://github.com/akash6190) and all other [contributors](http://github.com/arkenelabs/chrome-beam/graphs/contributors)

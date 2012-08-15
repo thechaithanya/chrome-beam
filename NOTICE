@@ -1,0 +1,26 @@
+    Beam OS (a.k.a. Chrome Beam) is a Google Chrome plugin (specifically
+    a "packaged app") that allows the user to integrate multiple cloud
+    services together creating a virtual hard disk or "Cloud Drive" with
+    more available space. It also provides a handy "Save to Beam" option
+    in the context menu to quickly upload anything selected via cursor
+    to the cloud.
+
+    Copyright (C) 2012  Abhishek Shrivastava [ i.abhi27 [at] gmail.com ]
+                        Sumit Ranjan      [ sumitr.nitt [at] gmail.com ]
+                        Akash Chauhan       [ akash6190 [at] gmail.com ]
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    In case you want to use this software in any way which is restricted
+    by this license, then you must obtain the consent of all the authors.

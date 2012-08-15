@@ -135,7 +135,10 @@ function backNavigator()
 }
 function openFile(beamid)
 {
+<<<<<<< HEAD
 	$('#navigator-modal').modal('hide');
+=======
+>>>>>>> 87476805e3aef927189f7e4f5f67c72c9e046bd5
 	var file = BeamStorageManager.getFilesCollection()[beamid];
 	var url = file.fileurl;
 	var name = file.name;
